@@ -1,0 +1,1 @@
+To use, copy the text of your recipe into the string. The program will console log a list without all the prices added.
