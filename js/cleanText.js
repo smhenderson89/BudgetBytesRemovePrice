@@ -26,5 +26,3 @@ function cleanRecipeText(rawText) {
     // Join back into string
     return spacedIngredients.join("\n");
 }
-
-console.log("Cleaned ingredient list saved to cleaned_ingredients.txt");

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p dist && cp -r index.html style.css js/ favicon/ dist/",
     "start": "http-server . -p 3000 -o",
     "dev": "nodemon --exec \"http-server . -p 3000 -o -c-1\" --watch . --ext html,css,js",
     "watch": "nodemon --exec \"http-server . -p 3000 -c-1\" --watch . --ext html,css,js",
