@@ -1,0 +1,1 @@
+Run node index.js - will save cleaned recipe into "cleaned_ingredients.txt" text file

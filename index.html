@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Formating for Recipes</title>
+</head>
+<body>
+    <h3>Remove formatting from Recipes</h3>
+    <p>
+        This tool removes all formatting from recipes, leaving only plain text. It is useful for simplifying recipes for easier reading or printing.
+    </p>
+
+    <!-- Recipe input form, triggers index.js when clicked  -->
+    <form action="" method="">
+        <label for="recipe-input">Enter your recipe:</label><br>
+        <textarea id="recipe-input" name="recipe" rows="10" cols="50"></textarea><br>
+        <input type="submit" value="Remove Formatting">
+    </form>
+
+    <h3>Cleaned Text</h3>
+    <textarea id="cleaned-output" name="cleaned-recipe" rows="10" cols="50" readonly></textarea>
+    <br>
+    <button id="copy-button">Copy to Clipboard</button>
+    
+    <!-- Include the cleanText.js script -->
+    <script src="cleanText.js"></script>
+    
+    <script>
+        // Handle form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const recipeInput = document.getElementById('recipe-input');
+            const cleanedOutput = document.getElementById('cleaned-output');
+            const copyButton = document.getElementById('copy-button');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent form from actually submitting
+                
+                const rawText = recipeInput.value;
+                if (rawText.trim()) {
+                    // Use the function from cleanText.js
+                    const cleanedText = cleanRecipeText(rawText);
+                    cleanedOutput.value = cleanedText;
+                } else {
+                    alert('Please enter some recipe text first!');
+                }
+            });
+
+            // Handle copy to clipboard
+            copyButton.addEventListener('click', function() {
+                if (cleanedOutput.value) {
+                    cleanedOutput.select();
+                    document.execCommand('copy');
+                    
+                    // Provide feedback
+                    const originalText = copyButton.textContent;
+                    copyButton.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyButton.textContent = originalText;
+                    }, 2000);
+                } else {
+                    alert('No cleaned text to copy!');
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
